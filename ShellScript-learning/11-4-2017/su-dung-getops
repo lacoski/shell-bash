@@ -1,0 +1,52 @@
+#!/bin/sh
+
+name=
+age=
+gioitinh=
+
+help() 
+{
+	echo "Chuong trinh $0 -n -a -g"
+	echo 'Giai thich tham so'
+	echo '-n = ten'
+	echo '-a = tuoi'
+	echo '-g = gioi tinh (male - ma / female - fm )'
+	exit 1
+}
+if [ $# -lt 3 ]
+then
+	help
+fi
+echo "Chuong trinh nhap ten - tuoi - gioi tinh"
+while getopts "n:a:g:" opt
+do
+	case "${opt}" in
+	a)
+		age=${OPTARG}
+		;;
+	n) 
+		name=${OPTARG}
+		;;
+	g)
+		check=${OPTARG}
+		if [ "${check}" = "ma" ]
+		then
+			gioitinh=Nam
+		elif [ "${check}" = "fm" ]
+		then
+			gioitinh=Nu
+		else 
+			help
+		fi
+		;;
+	*)
+		
+		help
+		;;
+	esac
+done
+
+echo "Ten cua ban la $name"
+echo "Tuoi cua ban la $age"
+echo "Gioi tinh la $gioitinh"
+

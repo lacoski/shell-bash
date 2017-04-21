@@ -1,0 +1,5 @@
+BEGIN {
+n = 10
+printf "%d", n
+printf "\nAn apple a day, keeps away\t\t\tDoctor\n\a\a"
+}
